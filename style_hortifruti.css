@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(to left, #fde8a7, #f9c98c);
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+h1 {
+    color: #f79439;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #555;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.produto {
+    background-color: #F8EAB8;
+    border: 2px solid #f79439;
+    border-radius: 10px;
+    padding: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.produto:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.produto-img {
+    width: 100%; /* Ajuste a largura da imagem para ocupar 100% do espaço disponível */
+    height: auto; /* Mantenha a proporção da imagem */
+    border-radius: 8px; /* Borda arredondada para as imagens */
+    margin-bottom: 10px; /* Espaçamento abaixo da imagem */
+}
+
+h2 {
+    color: #f79439;
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+button {
+    background-color: #f39743;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #fcd15e;
+}

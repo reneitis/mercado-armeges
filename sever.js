@@ -26,6 +26,16 @@ app.get('/cardapio', (req, res) => {
     });
 });
 
+app.get('/hortifruti', (req, res) => {
+    fs.readFile(path.join(__dirname, 'cardapio_hortifruti.html'), (err, data) => {
+        if (err) {
+            res.status(500).send("500 - Erro Interno do Servidor");
+        } else {
+            res.status(200).type('text/html').send(data);
+        }
+    });
+});
+
 app.get('/pedido', (req, res) => {
     fs.readFile(path.join(__dirname, 'pedido.html'), (err, data) => {
         if (err) {
@@ -36,7 +46,7 @@ app.get('/pedido', (req, res) => {
     });
 });
 
-const PORT = 3011;
+const PORT = 3050;
 app.listen(PORT, () => {
     console.log(`[OK] - Servidor executando em: ${PORT}`);
 });
