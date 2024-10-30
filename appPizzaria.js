@@ -1,135 +1,64 @@
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function() {
 
-    function montarPizza(){
+    function montarCarrinho() {
 
         let custo = 0;
         let extra = "";
         let opcionais = "";
         let descricao = "";
 
-        // sabor selecionado
-        let saborSelecionado = document.querySelector('input[name="sabor"]:checked');
-        let sabor = saborSelecionado ? saborSelecionado.value : "";
-        
-        // obtendo tamanho selecionado 
-        let tamanhoSelecionado = document.querySelector('input[name="tamanho"]:checked')
-        let tamanho = tamanhoSelecionado ? tamanhoSelecionado.value : "";
+        // produto selecionado
+        let produtoSelecionado = document.querySelector('input[name="produto"]:checked');
+        let produto = produtoSelecionado ? produtoSelecionado.value : "";
 
-        // Calculo em relação Sabor / Tamanho:
-        if(tamanho === "Brotinho"){
-            if(sabor === "Margherita"){
-                custo += 18.75;
-            }else if(sabor === "Calabresa"){
-                custo += 21.00;
-            }else if(sabor === "Frango com Catupiry"){
-                custo += 22.50;
-            }else if(sabor === "Portuguesa"){
-                custo += 24.00;
-            }else if(sabor === "Quatro Queijos"){
-                custo += 26.25;
-            }
-        }else if(tamanho === "Padrao"){
-            if(sabor === "Margherita"){
-                custo += 25.00;
-            }else if(sabor === "Calabresa"){
-                custo += 28.00;
-            }else if(sabor === "Frango com Catupiry"){
-                custo += 30.00;
-            }else if(sabor === "Portuguesa"){
-                custo += 32.00;
-            }else if(sabor === "Quatro Queijos"){
-                custo += 35.00;
-            }
-        }else if(tamanho === "Grande"){
-            if(sabor === "Margherita"){
-                custo += 31.25;
-            }else if(sabor === "Calabresa"){
-                custo += 35.00;
-            }else if(sabor === "Frango com Catupiry"){
-                custo += 37.50;
-            }else if(sabor === "Portuguesa"){
-                custo += 40.00;
-            }else if(sabor === "Quatro Queijos"){
-                custo += 43.75;
-            }
-        }
-
-        // Borda selecionada
-        let bordaSelecionada = document.querySelector('input[name="borda"]:checked')
-        let borda = bordaSelecionada ? bordaSelecionada.value : 'Tamanho não selecionado';
-
-        if(borda === "Sem Borda"){
-            custo += 0.00;
-        }else if(borda === "Tradicional"){
-            custo += 0.00;
-        }else if(borda === "Recheada Catupiry"){
-            custo += 2.00;
-        }else if(borda === "Recheada Cheddar"){
-            custo += 3.00;
-        }
-
-        //Ingredientes Extras:
-        let queijoExtraCheckbox = document.querySelector('input[name="extra-queijo"]:checked');
-        if(queijoExtraCheckbox){
-            custo += 2.00;
-            extra += "<br>   - Queijo"
-        }
-
-        let cheddarExtraCheckbox = document.querySelector('input[name="extra-cheddar"]:checked');
-        if(cheddarExtraCheckbox){
-            custo += 5.00;
-            extra += "<br>   - Cheddar"
-        }
-        
-        let baconExtraCheckbox = document.querySelector('input[name="extra-bacon"]:checked')
-        if(baconExtraCheckbox){
-            custo += 3.00;
-            extra += "<br>   - Bacon"
-        }
-        
-        let pepperoniExtraCheckbox = document.querySelector('input[name="extra-pepperoni"]:checked')
-        if(pepperoniExtraCheckbox){
+        // Cálculo direto do custo do produto
+        if (produto === "Batata Frita") {
+            custo += 6.00;
+        } else if (produto === "Pipoca") {
             custo += 4.00;
-            extra += "<br>   -  Pepperoni"
-        }
-        
-        
-        //Opcionais
-        let oreganoOpcionalCheckbox = document.querySelector('input[name="opcionais-oregano"]:checked')
-        if(oreganoOpcionalCheckbox){
-            opcionais += "<br>   - Oregano"
-        }
-       
-        let azeitonaOpcionalCheckbox = document.querySelector('input[name="opcionais-azeitona"]:checked')
-        if(azeitonaOpcionalCheckbox){
-            opcionais += "<br>   - Azeitona"
-        }
-        
-        let azeiteOpcionalCheckbox = document.querySelector('input[name="opcionais-azeite"]:checked')
-        if(azeiteOpcionalCheckbox){
-            opcionais += "<br>   - Azeite"
-        }
-        
-        let pimentaOpcionalCheckbox = document.querySelector('input[name="opcionais-pimenta"]:checked')
-        if(pimentaOpcionalCheckbox){
-            opcionais += "<br>   - Pimenta"
+        } else if (produto === "Amendoim") {
+            custo += 3.50;
+        } else if (produto === "Mix de Castanhas") {
+            custo += 8.50;
+        } else if (produto === "Biscoito") {
+            custo += 2.50;
+        } else if (produto === "Barrinha de Cereal") {
+            custo += 2.00;
+        } else if (produto === "Chocolate") {
+            custo += 5.00;
+        } else if (produto === "Bala") {
+            custo += 1.50;
+        } else if (produto === "Chiclete") {
+            custo += 1.00;
+        } else if (produto === "Pirulito") {
+            custo += 1.00;
+        } else if (produto === "Gelatina") {
+            custo += 1.75;
+        } else if (produto === "Marshmallow") {
+            custo += 3.00;
         }
 
-        // Monta todo o pedido numa variavel:
-        descricao += "   - " + sabor + "<br>   - " + tamanho + "<br>   - " + borda + extra + opcionais;
+        // Opcionais extras
+        let embalagemOpcionalCheckbox = document.querySelector('input[name="opcionais-embalagem"]:checked');
+        if (embalagemOpcionalCheckbox) {
+            custo += 2.50;
+            extra += "<br>   - Embalagem para presente";
+        }
 
-        // FOI COMENTADO - NÂO VAI MAIS RETORNAR PRO SITE CARDAPIO.HTML
-            //output dos valores com as classes Total pedido e Descrição Pedido
-            //let totalPedidoElement = document.getElementById("total-pedido");
-            //totalPedidoElement.textContent = "R$:" + custo.toFixed(2);
-            //let descricaoPedidoElement = document.getElementById("descricao-pedido");
-            //descricaoPedidoElement.innerHTML =  descricao;
+        let cartaoOpcionalCheckbox = document.querySelector('input[name="opcionais-cartao"]:checked');
+        if (cartaoOpcionalCheckbox) {
+            custo += 1.00;
+            extra += "<br>   - Cartão personalizado";
+        }
 
-        // Envia dados do pedido para o pedido.html em JSON:
+        // Monta todo o pedido numa variável:
+        descricao += "   - " + produto + extra;
+
+        // Dados do pedido em JSON:
         const pedidoJSON = {
             "descricao": descricao,
-            "total":custo.toFixed(2)
-        }
+            "total": custo.toFixed(2)
+        };
 
         const pedidoString = JSON.stringify(pedidoJSON);
 
@@ -137,8 +66,7 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location.href = `pedido?pedido=${pedidoString}`;
     }
 
-    //Chama a função montarpizza ao clicar:
+    // Chama a função montarCarrinho ao clicar:
     const button = document.querySelector("button");
-    button.addEventListener('click', montarPizza);
+    button.addEventListener('click', montarCarrinho);
 });
-

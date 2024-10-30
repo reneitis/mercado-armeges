@@ -1,0 +1,9 @@
+# Ignorar tudo
+*
+
+# Excluir do ignore apenas os arquivos HTML e JSON
+!*.html
+!*.json
+
+# Ignorar a pasta node_modules
+node_modules/
